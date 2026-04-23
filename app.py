@@ -42,16 +42,30 @@ st.markdown("""
 }
 
 /* Ne pas forcer le '*' dans la sidebar pour éviter de casser les boutons SVG */
-[data-testid="stSidebar"] p, [data-testid="stSidebar"] span, [data-testid="stSidebar"] div { 
+[data-testid="stSidebar"] p, [data-testid="stSidebar"] span { 
     color: #c9d1d9; 
 }
 [data-testid="stSidebar"] .stRadio label:hover { color: #00bfb3 !important; }
 
-/* Force la visibilité du bouton d'ouverture (quand fermée) */
-[data-testid="collapsedControl"] {
+/* 🔴 CORRECTIF DEFINITIF POUR LES BOUTONS DE LA SIDEBAR 🔴 */
+/* Forcer la visibilité, la taille et le z-index de l'icone pour fermer et ouvrir */
+[data-testid="collapsedControl"], 
+[data-testid="stSidebarCollapseButton"] {
+    z-index: 99999 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: rgba(13, 17, 23, 0.6) !important;
+    border-radius: 6px;
+}
+
+[data-testid="collapsedControl"] svg, 
+[data-testid="stSidebarCollapseButton"] svg {
+    width: 28px !important;
+    height: 28px !important;
     color: #00bfb3 !important;
-    background-color: rgba(13, 17, 23, 0.8) !important;
-    border-radius: 5px;
+    fill: #00bfb3 !important;
+    display: block !important;
+    opacity: 1 !important;
 }
 
 /* Hero title */
