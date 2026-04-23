@@ -1,0 +1,9 @@
+{
+  "thr_incident": 0.5977,
+  "thr_suspicion": 0.3535,
+  "fp_incident": 4015,
+  "fp_suspicion": 8263,
+  "zd_incident": 20.08,
+  "zd_suspicion": 38.34,
+  "fp_reduction_pct": 68.1
+}

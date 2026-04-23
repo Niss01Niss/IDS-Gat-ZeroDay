@@ -1,0 +1,80 @@
+{
+  "alert": {
+    "src_ip": "192.168.10.50",
+    "dst_ip": "192.168.10.3",
+    "dst_port": 80,
+    "protocol": "HTTP/TCP",
+    "timestamp": "2017-07-05 14:32:07",
+    "alert_id": "IDS-2017-004821",
+    "analyst": "SOC L1 — Auto-generated"
+  },
+  "verdict": {
+    "xgb_pred": "BENIGN",
+    "xgb_conf": 0.9802,
+    "gat_ood": true,
+    "true_class": "DoS Slowhttptest"
+  },
+  "mitre": {
+    "id": "T1499.002",
+    "name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "tactic": "Impact"
+  },
+  "indicators": [
+    {
+      "label": "Active Min",
+      "value": "  10.775",
+      "reference": "  -0.030",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    },
+    {
+      "label": "Durée activité moyenne",
+      "value": "   9.249",
+      "reference": "  -0.025",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Régulière = comportement bot automatisé"
+    },
+    {
+      "label": "Active Max",
+      "value": "   5.842",
+      "reference": "   0.008",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    },
+    {
+      "label": "Idle Std",
+      "value": "   2.377",
+      "reference": "  -0.078",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    },
+    {
+      "label": "min_seg_size_forward",
+      "value": "   2.121",
+      "reference": "  -0.036",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    },
+    {
+      "label": "Fenêtre TCP aller",
+      "value": "   1.844",
+      "reference": "   0.057",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Valeur anormalement élevée → signature outil offensif (hping3, slowhttptest)"
+    },
+    {
+      "label": "PSH Flag Count",
+      "value": "   1.839",
+      "reference": "   0.086",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    },
+    {
+      "label": "Flow IAT Mean",
+      "value": "   1.275",
+      "reference": "  -0.339",
+      "level": "🔴 CRITIQUE",
+      "interpretation": "Indicateur réseau standard"
+    }
+  ]
+}

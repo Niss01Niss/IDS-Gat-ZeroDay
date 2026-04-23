@@ -1,0 +1,53 @@
+{
+  "zd_info": {
+    "n_zd_total": 1046,
+    "n_test_total": 117589,
+    "n_train": 376284,
+    "n_classes": 5,
+    "class_names": [
+      "BENIGN",
+      "DoS GoldenEye",
+      "DoS Hulk",
+      "DoS slowloris",
+      "Heartbleed"
+    ],
+    "zd_class_name": "DoS Slowhttptest"
+  },
+  "benchmark": {
+    "Random Forest": {
+      "f1_known": 99.77,
+      "zd_recall": 57.93,
+      "fp_day": 5088,
+      "fbeta2": 56.29,
+      "flows_per_sec": 110779
+    },
+    "XGBoost": {
+      "f1_known": 99.82,
+      "zd_recall": 42.73,
+      "fp_day": 1278,
+      "fbeta2": 46.76,
+      "flows_per_sec": 244640
+    },
+    "MLP (No Graph)": {
+      "f1_known": 98.22,
+      "zd_recall": 8.6,
+      "fp_day": 38063,
+      "fbeta2": 5.17,
+      "flows_per_sec": 8640922
+    },
+    "GAT V5 (composite P94.05)": {
+      "f1_known": 96.81,
+      "zd_recall": 96.08,
+      "fp_day": 50007,
+      "fbeta2": 45.61,
+      "flows_per_sec": 13982243
+    },
+    "GAT V5 (composite P94.05) +cns0.999": {
+      "f1_known": 96.81,
+      "zd_recall": 95.51,
+      "fp_day": 12596,
+      "fbeta2": 75.1,
+      "flows_per_sec": 13982243
+    }
+  }
+}
