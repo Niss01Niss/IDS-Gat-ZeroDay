@@ -18,7 +18,7 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@600;700;800&display=swap');
 
-* { box-sizing: border-box; }
+/* REMOVED global reset * { box-sizing: border-box; } because it breaks Streamlit SVG icons */
 
 .stApp {
     background: #0b0e14;
@@ -32,15 +32,27 @@ st.markdown("""
     position: fixed; top:0; left:0; width:100%; height:100%;
     background: repeating-linear-gradient(0deg, transparent, transparent 2px,
         rgba(0,191,179,0.012) 2px, rgba(0,191,179,0.012) 4px);
-    pointer-events: none; z-index: 0;
+    pointer-events: none; z-index: -1; /* Fix z-index pour ne pas bloquer les clics */
 }
 
+/* Customisation de la Sidebar */
 [data-testid="stSidebar"] {
     background: linear-gradient(160deg, #07090f 0%, #0d1117 60%, #0a1020 100%);
     border-right: 1px solid rgba(0,191,179,0.15);
 }
-[data-testid="stSidebar"] * { color: #c9d1d9 !important; }
+
+/* Ne pas forcer le '*' dans la sidebar pour éviter de casser les boutons SVG */
+[data-testid="stSidebar"] p, [data-testid="stSidebar"] span, [data-testid="stSidebar"] div { 
+    color: #c9d1d9; 
+}
 [data-testid="stSidebar"] .stRadio label:hover { color: #00bfb3 !important; }
+
+/* Force la visibilité du bouton d'ouverture (quand fermée) */
+[data-testid="collapsedControl"] {
+    color: #00bfb3 !important;
+    background-color: rgba(13, 17, 23, 0.8) !important;
+    border-radius: 5px;
+}
 
 /* Hero title */
 .hero-title {
