@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -220,8 +219,48 @@ st.markdown("""
     border-radius: 12px; padding: 20px; margin: 12px 0;
 }
 
-/* Hide default streamlit chrome */
-#MainMenu,footer,header { visibility:hidden; }
+/* Hide default streamlit chrome — WITHOUT hiding the sidebar toggle button */
+#MainMenu { display: none !important; }
+footer { visibility: hidden !important; }
+header { visibility: hidden !important; }
+
+/* 🔴 CORRECTIF SIDEBAR TOGGLE 🔴 */
+/* Le header est caché mais son bouton collapse doit rester visible */
+header[data-testid="stHeader"] {
+    height: 0 !important;
+    overflow: visible !important;  /* Les enfants (le bouton) peuvent déborder */
+}
+
+/* Cibler les deux variantes possibles du bouton selon la version de Streamlit */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapseButton"],
+button[kind="header"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    position: fixed !important;
+    top: 8px !important;
+    left: 8px !important;
+    background: rgba(0,191,179,0.15) !important;
+    border: 1px solid rgba(0,191,179,0.4) !important;
+    border-radius: 8px !important;
+    width: 36px !important;
+    height: 36px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+[data-testid="collapsedControl"] svg,
+[data-testid="stSidebarCollapseButton"] svg,
+button[kind="header"] svg {
+    width: 20px !important;
+    height: 20px !important;
+    fill: #00bfb3 !important;
+    color: #00bfb3 !important;
+    display: block !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
