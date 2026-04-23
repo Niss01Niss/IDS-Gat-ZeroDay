@@ -219,47 +219,103 @@ st.markdown("""
     border-radius: 12px; padding: 20px; margin: 12px 0;
 }
 
-/* Hide default streamlit chrome — WITHOUT hiding the sidebar toggle button */
+/* Cache uniquement le footer et le menu hamburger — PAS le header (il contient le bouton sidebar) */
 #MainMenu { display: none !important; }
-footer { visibility: hidden !important; }
-header { visibility: hidden !important; }
+footer    { visibility: hidden !important; }
 
-/* 🔴 CORRECTIF SIDEBAR TOGGLE 🔴 */
-/* Le header est caché mais son bouton collapse doit rester visible */
-header[data-testid="stHeader"] {
-    height: 0 !important;
-    overflow: visible !important;  /* Les enfants (le bouton) peuvent déborder */
+/* ═══════════════════════════════════════════
+   📱 RESPONSIVE MOBILE (max-width: 768px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* Hero title plus petit sur mobile */
+    .hero-title {
+        font-size: 20px !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* KPI cards : 2 par ligne sur mobile au lieu de 4 */
+    .kpi-card {
+        padding: 14px 10px !important;
+        margin-bottom: 8px !important;
+    }
+    .kpi-val {
+        font-size: 22px !important;
+    }
+    .kpi-lbl {
+        font-size: 9px !important;
+    }
+
+    /* Les colonnes Streamlit prennent toute la largeur */
+    [data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 45% !important;
+        min-width: 140px !important;
+    }
+
+    /* Tableaux scrollables horizontalement */
+    .dark-table {
+        display: block !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+    }
+
+    /* Alert rows plus compactes */
+    .alert-row {
+        font-size: 10px !important;
+        padding: 8px 10px !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+
+    /* Section headers plus compacts */
+    .sec-hdr h3 {
+        font-size: 14px !important;
+    }
+    .sec-hdr {
+        padding: 8px 12px !important;
+        margin: 14px 0 10px !important;
+    }
+
+    /* Badges plus petits */
+    .badge {
+        font-size: 9px !important;
+        padding: 2px 7px !important;
+    }
+
+    /* Incident card padding réduit */
+    .incident-body {
+        padding: 12px !important;
+    }
+    .incident-header {
+        padding: 10px 14px !important;
+    }
+
+    /* Plotly charts scrollables */
+    [data-testid="stPlotlyChart"] {
+        overflow-x: auto !important;
+    }
+
+    /* Live badge plus petit */
+    .live-badge {
+        font-size: 10px !important;
+        padding: 4px 10px !important;
+    }
 }
 
-/* Cibler les deux variantes possibles du bouton selon la version de Streamlit */
-[data-testid="collapsedControl"],
-[data-testid="stSidebarCollapseButton"],
-button[kind="header"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    position: fixed !important;
-    top: 8px !important;
-    left: 8px !important;
-    background: rgba(0,191,179,0.15) !important;
-    border: 1px solid rgba(0,191,179,0.4) !important;
-    border-radius: 8px !important;
-    width: 36px !important;
-    height: 36px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-}
+/* ═══════════════════════════════════════════
+   📱 TRÈS PETIT ÉCRAN (max-width: 480px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+    .hero-title { font-size: 16px !important; }
+    .kpi-val    { font-size: 18px !important; }
 
-[data-testid="collapsedControl"] svg,
-[data-testid="stSidebarCollapseButton"] svg,
-button[kind="header"] svg {
-    width: 20px !important;
-    height: 20px !important;
-    fill: #00bfb3 !important;
-    color: #00bfb3 !important;
-    display: block !important;
+    /* Sur très petit écran, colonnes en 1 seule */
+    [data-testid="column"] {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
